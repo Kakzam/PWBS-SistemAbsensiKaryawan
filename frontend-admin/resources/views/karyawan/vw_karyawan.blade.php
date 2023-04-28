@@ -470,9 +470,14 @@
                             <button type="button" class="btn btn-primary"
                                 onclick="hapusData({{ $output->id }})">Hapus</button>
                         </form>
-                        <form>
-                            <button type="button" class="btn btn-primary"
-                                onclick="updateData({{ $output->id }})">Update</button>
+                        <form action="http://127.0.0.1:9000/karyawan" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $output->id }}">
+                            <input type="hidden" name="jabatan" value="{{ $output->jabatan_id }}">
+                            <input type="hidden" name="nama" value="{{ $output->nama }}">
+                            <input type="hidden" name="username" value="{{ $output->username }}">
+                            <input type="hidden" name="password" value="{{ $output->password }}">
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                     </td>
                 </tr>
