@@ -31,4 +31,19 @@ class KaryawanController extends Controller
 
         return view("karyawan/vw_karyawan",$data);
     }
+
+    public function vw_update(Request $request)
+    {
+        $data = [
+            'id' => $request->id,
+            'jabatan_id' => $request->jabatan,
+            'nik' => $request->nik,
+            'nama_lengkap' => $request->nama_lengkap,
+            'username' => $request->username,
+            'password' => $request->password,
+            'url' => env("URL_SERVER")
+        ];
+
+        return view("karyawan/vw_karyawan_update",$data);;
+    }
 }
