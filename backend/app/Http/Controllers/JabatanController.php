@@ -25,4 +25,13 @@ class JabatanController extends Controller
             "jabatan" => $jabatan
         ], 201);
     }
+
+    public function get_all()
+    {
+        $data = $this->model->all();
+
+        return response([
+            "jabatan" => $data
+        ], http_response_code());
+    }
 }
