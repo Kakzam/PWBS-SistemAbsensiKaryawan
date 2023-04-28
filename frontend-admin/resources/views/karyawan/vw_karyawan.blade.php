@@ -408,7 +408,13 @@
     <form>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Jabatan</label>
-            <input type="text" class="form-control" id="jabatan">
+            <select class="form-select" id="jabatan">
+                <option value="">Pilih Jabatan</option>
+                @foreach ($result_jabatan->jabatan as $output)
+                <option value="{{ $output->id }}">{{ $output->jabatan_nama }}</option>
+                @endforeach
+            </select>
+            {{-- <input type="text" class="form-control" id="jabatan"> --}}
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Nomor Induk Kependudukan (NIK)</label>
