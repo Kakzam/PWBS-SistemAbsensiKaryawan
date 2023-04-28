@@ -44,3 +44,6 @@ Route::post('karyawan', [KaryawanController::class, 'create_karyawan']);
 
 // Menampilkan Semua Data Jabatan
 Route::get('karyawan', [KaryawanController::class, 'get_all']);
+
+// Mencari Salah Satu Data Jabatan
+Route::get('karyawan_cari/{parameter}', [KaryawanController::class, 'get_find']);
