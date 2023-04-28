@@ -407,14 +407,31 @@
 <body class="antialiased">
     <form>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Nama Jabatan</label>
-            <input type="text" class="form-control" id="nama_jabatan" value="{{ $nama_jabatan }}">
+            <label for="exampleInputEmail1" class="form-label">Jabatan</label>
+            <select class="form-select" id="jabatan">
+                <option value="">Pilih Jabatan</option>
+                @foreach ($result_jabatan->jabatan as $output)
+                <option value="{{ $output->id }}" @if($output->id == $jabatan) selected @endif>{{ $output->jabatan_nama }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Gaji</label>
-            <input type="number" class="form-control" id="gaji" value="{{ $gaji }}">
+            <label for="exampleInputPassword1" class="form-label">Nomor Induk Kependudukan (NIK)</label>
+            <input type="number" class="form-control" id="nik">
         </div>
-        <button type="button" class="btn btn-primary" onclick="updateData({{ $id }})">Update</button>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control" id="nama_lengkap">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="text" class="form-control" id="password">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="updateData()">UPDATE</button>
     </form>
 
     <script>
