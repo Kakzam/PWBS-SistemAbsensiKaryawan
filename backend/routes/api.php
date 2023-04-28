@@ -41,3 +41,6 @@ Route::post('jabatan_update', [JabatanController::class, 'update_jabatan']);
 
 // Menambah Data Karyawan
 Route::post('karyawan', [KaryawanController::class, 'create_karyawan']);
+
+// Menampilkan Semua Data Jabatan
+Route::get('karyawan', [KaryawanController::class, 'get_all']);
