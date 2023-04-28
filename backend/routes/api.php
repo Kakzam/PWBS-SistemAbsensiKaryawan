@@ -30,3 +30,6 @@ Route::get('jabatan', [JabatanController::class, 'get_all']);
 
 // Mencari Salah Satu Data Jabatan
 Route::get('jabatan_cari/{parameter}', [JabatanController::class, 'get_find']);
+
+// Menghapus Data Jabatan
+Route::delete('jabatan_delete/{parameter}', [JabatanController::class, 'delete_jabatan']);
