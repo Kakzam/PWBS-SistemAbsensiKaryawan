@@ -27,3 +27,6 @@ Route::post('jabatan', [JabatanController::class, 'create_jabatan']);
 
 // Menampilkan Semua Data Jabatan
 Route::get('jabatan', [JabatanController::class, 'get_all']);
+
+// Mencari Salah Satu Data Jabatan
+Route::get('jabatan_cari/{parameter}', [JabatanController::class, 'get_find']);
