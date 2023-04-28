@@ -454,6 +454,42 @@
             @endforeach
         </tbody>
     </table>
+
+    <script>
+        function simpanData() {
+            const namaJabatan = document.getElementById('nama_jabatan').value;
+            const gaji = document.getElementById('gaji').value;
+
+            if (namaJabatan === '') {
+                alert('Nama Jabatan Tidak Boleh Kosong');
+            } else if (gaji === '') {
+                alert('Gaji Tidak Boleh Kosong');
+            } else {
+                if (gaji < 0) {
+                    alert('Gaji Lebih Dari 0');
+                } else {
+                    const data = {
+                        jabatan_nama: namaJabatan,
+                        jabatan_gaji: gaji
+                    };
+
+                    fetch('{{ $url }}/api/jabatan', {
+                            method: 'POST',
+                            body: JSON.stringify(data),
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            alert(data.message);
+                            window.location.reload();
+                        })
+                        .catch(error => console.error(error))
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>
