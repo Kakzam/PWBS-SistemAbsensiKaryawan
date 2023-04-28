@@ -420,6 +420,40 @@
 
     <br>
     <br>
+
+    <table>
+        <thead>
+            <tr>
+                <td>No</td>
+                <td>Jabatan</td>
+                <td>Gaji</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @php
+                $position = 1;
+            @endphp
+            @foreach ($result->jabatan as $output)
+                <tr>
+                    <td>{{ $position++ }}</td>
+                    <td>{{ $output->jabatan_nama }}</td>
+                    <td>{{ $output->jabatan_gaji }}</td>
+                    <td>
+                        <form>
+                            <button type="button" class="btn btn-primary"
+                                onclick="hapusData({{ $output->id }})">Hapus</button>
+                        </form>
+                        <form>
+                            <button type="button" class="btn btn-primary"
+                                onclick="updateData({{ $output->id }})">Update</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 
 </html>
