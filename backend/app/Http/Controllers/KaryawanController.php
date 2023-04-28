@@ -28,4 +28,13 @@ class KaryawanController extends Controller
             "karyawan" => $karyawan
         ], 201);
     }
+
+    public function get_all()
+    {
+        $data = $this->model->all();
+
+        return response([
+            "karyawan" => $data
+        ], http_response_code());
+    }
 }
