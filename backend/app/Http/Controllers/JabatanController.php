@@ -34,4 +34,23 @@ class JabatanController extends Controller
             "jabatan" => $data
         ], http_response_code());
     }
+
+    public function get_find($find)
+    {
+        $data = $this->model->find($find);
+        // $data = $this->model->find(base64_decode($find));
+
+        if (!$data) {
+            return response([
+                "message" => "Data not found",
+                "param" => false
+            ], 404);
+        }
+        
+        return response([
+                "param" => true,
+                "message" => "Data found",
+                "jabatan" => $data
+            ], 200);
+    }
 }
