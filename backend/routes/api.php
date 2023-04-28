@@ -20,3 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/* JABATAN */
+
+// Menambah Data Jabatan
+Route::post('jabatan', [JabatanController::class, 'create_jabatan']);
