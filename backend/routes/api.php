@@ -50,3 +50,9 @@ Route::get('karyawan_cari/{parameter}', [KaryawanController::class, 'get_find'])
 
 // Menghapus Data Jabatan
 Route::delete('karyawan_delete/{parameter}', [KaryawanController::class, 'delete_karyawan']);
+
+// Mengupdate Data Jabatan
+Route::post('karyawan_update', [KaryawanController::class, 'update_karyawan']);
+
+/* ABSEN */
+
