@@ -18,10 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('jabatan', function () {
-//     return view('jabatan/vw_jabatan', [
-//         'url' => env('URL_SERVER')
-//     ]);
-// });
-
 Route::get('jabatan', [JabatanController::class, 'index']);
+Route::post('jabatan', [JabatanController::class, 'vw_update']);
