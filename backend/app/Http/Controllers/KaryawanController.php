@@ -74,4 +74,31 @@ class KaryawanController extends Controller
             "param" => true
         ], 200);
     }
+
+    public function update_karyawan(Request $request, $id)
+    {
+        $karyawan = $this->model->find($id);
+
+        if (!$karyawan) {
+            return response([
+                "message" => "Data not found",
+                "param" => false
+            ], 404);
+        }
+
+        $karyawan->jabatan_id = $request->jabatan_id;
+        $karyawan->nik = $request->nik;
+        $karyawan->nama = $request->nama;
+        $karyawan->username = $request->username;
+        $karyawan->password = $request->password;
+        $karyawan->delete = $request->delete;
+        $karyawan->save();
+
+        return response([
+            "message" => "Data updated successfully",
+            "param" => true,
+            "karyawan" => $karyawan,
+            "request" => $request
+        ], 200);
+    }
 }
