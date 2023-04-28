@@ -18,13 +18,23 @@ class JabatanController extends Controller
         $request = $this->client->get($url);
         $response = $request->getBody();
 
-        // echo $url;
-        // dd($response);
         $data = [
             'url' => env("URL_SERVER"),
             'result' => json_decode($response)
         ];
 
         return view("jabatan/vw_jabatan",$data);
+    }
+
+    public function vw_update(Request $request)
+    {
+        $data = [
+            'id' => $request->id,
+            'nama_jabatan' => $request->nama_jabatan,
+            'gaji' => $request->gaji,
+            'url' => env("URL_SERVER")
+        ];
+
+        return view("jabatan/vw_jabatan_update",$data);;
     }
 }
