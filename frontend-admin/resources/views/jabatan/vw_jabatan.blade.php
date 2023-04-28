@@ -489,6 +489,23 @@
                 }
             }
         }
+
+        function hapusData(data) {
+            fetch('{{ $url }}/api/jabatan_delete/' + data, {
+                    method: 'DELETE',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    window.location.reload();
+                })
+                .catch(error => console.error(error))
+            alert(data);
+        }
     </script>
 </body>
 
