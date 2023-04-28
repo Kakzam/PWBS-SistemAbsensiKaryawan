@@ -47,3 +47,6 @@ Route::get('karyawan', [KaryawanController::class, 'get_all']);
 
 // Mencari Salah Satu Data Jabatan
 Route::get('karyawan_cari/{parameter}', [KaryawanController::class, 'get_find']);
+
+// Menghapus Data Jabatan
+Route::delete('karyawan_delete/{parameter}', [KaryawanController::class, 'delete_karyawan']);
