@@ -17,3 +17,11 @@ use App\Http\Controllers\JabatanController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('jabatan', function () {
+//     return view('jabatan/vw_jabatan', [
+//         'url' => env('URL_SERVER')
+//     ]);
+// });
+
+Route::get('jabatan', [JabatanController::class, 'index']);
