@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KaryawanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::get('/', function () {
 
 Route::get('jabatan', [JabatanController::class, 'index']);
 Route::post('jabatan', [JabatanController::class, 'vw_update']);
+
+Route::get('karyawan', [KaryawanController::class, 'index']);
+Route::post('karyawan', [KaryawanController::class, 'vw_update']);
