@@ -53,4 +53,23 @@ class JabatanController extends Controller
                 "jabatan" => $data
             ], 200);
     }
+
+    public function delete_jabatan($id)
+    {
+        $jabatan = $this->model->find($id);
+
+        if (!$jabatan) {
+            return response([
+                "message" => "Data not found",
+                "param" => false
+            ], 404);
+        }
+
+        $jabatan->delete();
+
+        return response([
+            "message" => "Data deleted successfully",
+            "param" => true
+        ], 200);
+    }
 }
