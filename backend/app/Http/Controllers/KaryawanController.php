@@ -55,4 +55,23 @@ class KaryawanController extends Controller
                 "karyawan" => $data
             ], 200);
     }
+
+    public function delete_karyawan($id)
+    {
+        $karyawan = $this->model->find($id);
+
+        if (!$karyawan) {
+            return response([
+                "message" => "Data not found",
+                "param" => false
+            ], 404);
+        }
+
+        $karyawan->delete();
+
+        return response([
+            "message" => "Data deleted successfully",
+            "param" => true
+        ], 200);
+    }
 }
