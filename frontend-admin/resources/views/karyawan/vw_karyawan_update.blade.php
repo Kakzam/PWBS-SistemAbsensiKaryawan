@@ -436,24 +436,33 @@
 
     <script>
         function updateData(id) {
-            const namaJabatan = document.getElementById('nama_jabatan').value;
-            const gaji = document.getElementById('gaji').value;
+            const jabatan = document.getElementById('jabatan').value;
+            const nik = document.getElementById('nik').value;
+            const nama_lengkap = document.getElementById('nama_lengkap').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-            if (namaJabatan === '') {
-                alert('Nama Jabatan Tidak Boleh Kosong');
-            } else if (gaji === '') {
-                alert('Gaji Tidak Boleh Kosong');
+            if (jabatan === '') {
+                alert('Jabatan Tidak Boleh Kosong');
+            } else if (nik === '') {
+                alert('Nomor Induk Kependudukan Tidak Boleh Kosong');
+            } else if (nama_lengkap === '') {
+                alert('Nama Lengkap Tidak Boleh Kosong');
+            } else if (username === '') {
+                alert('Username Tidak Boleh Kosong');
+            } else if (password === '') {
+                alert('Password Tidak Boleh Kosong');
             } else {
-                if (gaji < 0) {
-                    alert('Gaji Lebih Dari 0');
-                } else {
-                    const data = {
-                        jabatan_nama: namaJabatan,
-                        jabatan_gaji: gaji,
-                        id: id
+                const data = {
+                        id: id,
+                        jabatan_id: jabatan,
+                        nik: nik,
+                        nama: nama_lengkap,
+                        username: username,
+                        password: password
                     };
 
-                    fetch('{{ $url }}/api/jabatan_update', {
+                    fetch('{{ $url }}/api/karyawan_update', {
                             method: 'POST',
                             body: JSON.stringify(data),
                             headers: {
@@ -466,8 +475,23 @@
                             window.location.reload();
                         })
                         .catch(error => console.error(error))
-                }
             }
+        }
+
+        function hapusData(data) {
+            fetch('{{ $url }}/api/karyawan_delete/' + data, {
+                    method: 'DELETE',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    window.location.reload();
+                })
+                .catch(error => console.error(error))
         }
     </script>
 </body>
