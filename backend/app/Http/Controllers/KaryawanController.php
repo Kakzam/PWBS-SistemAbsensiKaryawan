@@ -37,4 +37,22 @@ class KaryawanController extends Controller
             "karyawan" => $data
         ], http_response_code());
     }
+
+    public function get_find($find)
+    {
+        $data = $this->model->find($find);
+
+        if (!$data) {
+            return response([
+                "message" => "Data not found",
+                "param" => false
+            ], 404);
+        }
+        
+        return response([
+                "param" => true,
+                "message" => "Data found",
+                "karyawan" => $data
+            ], 200);
+    }
 }
