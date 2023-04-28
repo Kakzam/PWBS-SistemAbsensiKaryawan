@@ -72,4 +72,29 @@ class JabatanController extends Controller
             "param" => true
         ], 200);
     }
+
+    public function update_jabatan(Request $request)
+    {
+        $jabatan = $this->model->find($request->id);
+
+        if (!$jabatan) {
+            return response([
+                "message" => "Data not found",
+                "param" => false
+            ], 404);
+        }
+
+        $jabatan->jabatan_nama = $request->jabatan_nama;
+        $jabatan->jabatan_gaji = $request->jabatan_gaji;
+        $jabatan->delete = 1;
+        // $jabatan->delete = $request->delete;
+        $jabatan->save();
+
+        return response([
+            "message" => "Data updated successfully",
+            "param" => true,
+            "jabatan" => $jabatan,
+            "request" => $request
+        ], 200);
+    }
 }
