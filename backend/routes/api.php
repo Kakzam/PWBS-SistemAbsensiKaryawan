@@ -24,3 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Menambah Data Jabatan
 Route::post('jabatan', [JabatanController::class, 'create_jabatan']);
+
+// Menampilkan Semua Data Jabatan
+Route::get('jabatan', [JabatanController::class, 'get_all']);
