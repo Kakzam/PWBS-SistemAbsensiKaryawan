@@ -447,6 +447,7 @@
                         .then(data => {
                             alert(data.message);
                             window.location.reload();
+                            window.location.href = '{{ env('APP_URL') . '/jabatan' }}';
                         })
                         .catch(error => console.error(error))
                 }
