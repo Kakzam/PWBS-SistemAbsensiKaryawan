@@ -11,4 +11,18 @@ class JabatanController extends Controller
     {
         $this->model = new MJabatan();
     }
+
+    public function create_jabatan(Request $request)
+    {
+        $jabatan = $this->model->create([
+            "jabatan_nama" => $request->jabatan_nama,
+            "jabatan_gaji" => $request->jabatan_gaji
+        ]);
+
+        return response([
+            "message" => "Data created successfully",
+            "param" => true,
+            "jabatan" => $jabatan
+        ], 201);
+    }
 }
