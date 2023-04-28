@@ -506,6 +506,10 @@
                 .catch(error => console.error(error))
             alert(data);
         }
+
+        function updateData(id) {
+            // window.location.alert('asdasd', 'Google', true)
+        }
     </script>
 </body>
 
