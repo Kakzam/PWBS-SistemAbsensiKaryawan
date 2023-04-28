@@ -453,11 +453,18 @@
             @php
                 $position = 1;
             @endphp
-            @foreach ($result->jabatan as $output)
+            @foreach ($result_karyawan->karyawan as $output)
                 <tr>
                     <td>{{ $position++ }}</td>
-                    <td>{{ $output->jabatan_nama }}</td>
-                    <td>{{ $output->jabatan_gaji }}</td>
+                    <td>
+                        @foreach ($result_jabatan->jabatan as $jabatan)
+                            @if($jabatan->id == $output->jabatan_id) 
+                                {{ ucwords($jabatan->jabatan_nama) }}
+                            @endif
+                        @endforeach
+                    </td>
+                    <td>{{ $output->nama }}</td>
+                    <td>{{ $output->username }}</td>
                     <td>
                         <form>
                             <button type="button" class="btn btn-primary"
