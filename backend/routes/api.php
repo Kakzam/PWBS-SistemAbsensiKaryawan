@@ -36,3 +36,8 @@ Route::delete('jabatan_delete/{parameter}', [JabatanController::class, 'delete_j
 
 // Mengupdate Data Jabatan
 Route::post('jabatan_update', [JabatanController::class, 'update_jabatan']);
+
+/* KARYAWAN */
+
+// Menambah Data Karyawan
+Route::post('karyawan', [KaryawanController::class, 'create_karyawan']);
