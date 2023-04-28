@@ -406,7 +406,6 @@
 
 <body class="antialiased">
     <form>
-        {{-- <form action="{{ env('URL_SERVER') . '/jabatan' }}" method="post"> --}}
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nama Jabatan</label>
             <input type="text" class="form-control" id="nama_jabatan">
@@ -445,9 +444,12 @@
                             <button type="button" class="btn btn-primary"
                                 onclick="hapusData({{ $output->id }})">Hapus</button>
                         </form>
-                        <form>
-                            <button type="button" class="btn btn-primary"
-                                onclick="updateData({{ $output->id }})">Update</button>
+                        <form action="http://127.0.0.1:9000/jabatan" method="POST">
+                            @csrf
+                            <input type="hidden" name="nama_jabatan" value="{{ $output->jabatan_nama }}">
+                            <input type="hidden" name="gaji" value="{{ $output->jabatan_gaji }}">
+                            <input type="hidden" name="id" value="{{ $output->id }}">
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                     </td>
                 </tr>
@@ -505,10 +507,6 @@
                 })
                 .catch(error => console.error(error))
             alert(data);
-        }
-
-        function updateData(id) {
-            // window.location.alert('asdasd', 'Google', true)
         }
     </script>
 </body>
