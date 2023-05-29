@@ -15,6 +15,12 @@ class CreateMAbsensTable extends Migration
     {
         Schema::create('m_absens', function (Blueprint $table) {
             $table->id();
+            $table->string("id_user");
+            $table->string("id_jabatan");
+            $table->string("gaji");
+            $table->string("tanggal");
+            $table->string("bulan");
+            $table->string("tahun");
             $table->timestamps();
         });
     }
