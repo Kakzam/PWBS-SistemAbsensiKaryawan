@@ -40,7 +40,7 @@ class ControllerUser extends Controller
         ],http_response_code());
     }
 
-    function delete($parameter)
+    function deleteData($parameter)
     {
         $user = $this->model->find($parameter);
 
@@ -59,7 +59,7 @@ class ControllerUser extends Controller
         ], 200);
     }
 
-    function insert(Request $input)
+    function createdData(Request $input)
     {
         $this->model->create([
             'nama_user' => $input->name, 
@@ -74,7 +74,7 @@ class ControllerUser extends Controller
         ],http_response_code());
     }
 
-    function update(Request $input)
+    function updateData(Request $input)
     {
         $user = $this->model->where('id', $input->id)->first();
 

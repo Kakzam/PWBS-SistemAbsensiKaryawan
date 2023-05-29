@@ -62,7 +62,6 @@ class ControllerJabatan extends Controller
             ], 201);
         }
         
-        // Ubah data
         $data->update([
             'nama_jabatan' => $input->name,
             'gaji' => $input->gaji
