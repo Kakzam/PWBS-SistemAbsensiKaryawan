@@ -44,7 +44,7 @@ class ControllerUser extends Controller
     {
         $user = $this->model->find($parameter);
 
-        if (!$jabatan) {
+        if (!$user) {
             return response([
                 "action" => false,
                 "message" => "Data User Tidak ditemukan"
@@ -87,7 +87,7 @@ class ControllerUser extends Controller
         
         $user->update([
             'nama_user' => $input->name,
-            'id_jabatan' => $input->id,
+            'id_jabatan' => $input->id_jabatan,
             'username' => $input->username,
             'password' => $input->password
         ]);
