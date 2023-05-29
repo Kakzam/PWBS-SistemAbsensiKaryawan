@@ -88,7 +88,7 @@
                         .then(data => {
                             alert(data.message);
                             if (data.action) {
-                               localStorage.setItem('id', data.id);
+                               localStorage.setItem('id', data.data.id);
                                window.location.href = '{{ env('APP_URL') . '/dashboard' }}';
                             }
                         })
