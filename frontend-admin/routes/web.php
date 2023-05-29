@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use GuzzleHttp\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('dashboard', function () {
+    return view('dashboard');
+});
+
+Route::get('user-tambah', function () {
+    $url = env("APP_SERVER") . "/api/user";
+    $url_jabatan = env("APP_SERVER") . "/api/jabatan";
+    $client = new Client();
+    return view('user_tambah', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody()), 'jabatan' => json_decode($client->get($url_jabatan)->getBody())]);
+});
+
+Route::get('user-ubah', function () {
+    return view('user_update');
 });
