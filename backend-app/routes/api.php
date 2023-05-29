@@ -35,15 +35,15 @@ Route::put('user',[ControllerUser::class,'updateData']);
 /*************************************************************************/
 
 /* Menambahkan Data Jabatan */
-Route::post('user',[ControllerJabatan::class,'createdData']);
+Route::post('jabatan',[ControllerJabatan::class,'createData']);
 
 /* Mengambil Semua Data Jabatan */
-Route::get('user',[ControllerJabatan::class,'getData']);
+Route::get('jabatan',[ControllerJabatan::class,'getData']);
 
 /* Menghapus Data Jabatan Berdasarkan ID */
-Route::delete('user/{parameter}',[ControllerJabatan::class,'deleteData']);
+Route::delete('jabatan/{parameter}',[ControllerJabatan::class,'deleteData']);
 
 /* Mengupdate Data Jabatan */
-Route::put('user',[ControllerJabatan::class,'updateData']);
+Route::put('jabatan',[ControllerJabatan::class,'updateData']);
 
 /*************************************************************************/
