@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KaryawanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('jabatan', [JabatanController::class, 'index']);
+Route::post('jabatan', [JabatanController::class, 'vw_update']);
+
+Route::get('karyawan', [KaryawanController::class, 'index']);
+Route::post('karyawan', [KaryawanController::class, 'vw_update']);
