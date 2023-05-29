@@ -15,6 +15,13 @@ class CreateMGajisTable extends Migration
     {
         Schema::create('m_gajis', function (Blueprint $table) {
             $table->id();
+            $table->string("id_user");
+            $table->string("id_jabatan");
+            $table->string("tanggal");
+            $table->string("bulan");
+            $table->string("tahun");
+            $table->string("total_absen");
+            $table->string("total_gaji");
             $table->timestamps();
         });
     }
