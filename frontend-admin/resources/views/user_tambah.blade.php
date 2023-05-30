@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>Tambah User</title>
 
     <!-- Custom fonts for this template -->
     <link href="https://startbootstrap.github.io/startbootstrap-sb-admin-2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -82,8 +82,8 @@
                 </a>
                 <div id="jabatan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Tambah Jabatan</a>
-                        <a class="collapse-item" href="#">Update Jabatan</a>
+                        <a class="collapse-item" href="jabatan-tambah">Tambah Jabatan</a>
+                        <a class="collapse-item" href="jabatan-ubah">Update Jabatan</a>
                     </div>
                 </div>
             </li>
@@ -356,6 +356,10 @@
                                 <button type="button" onclick="saveUser()" class="btn btn-primary btn-user btn-block">SIMPAN</button>
                             </form>
                         </div>
+                        
+                    </div>
+
+                    <div class="card shadow mb-4">
 
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">List User</h6>
@@ -420,7 +424,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Sistem Absensi Karyawan 2023</span>
                     </div>
                 </div>
             </footer>
