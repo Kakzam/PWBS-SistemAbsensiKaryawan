@@ -78,8 +78,8 @@
                 </a>
                 <div id="jabatan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Tambah Jabatan</a>
-                        <a class="collapse-item" href="#">Update Jabatan</a>
+                        <a class="collapse-item" href="jabatan-tambah">Tambah Jabatan</a>
+                        <a class="collapse-item" href="jabatan-update">Update Jabatan</a>
                     </div>
                 </div>
             </li>
