@@ -36,15 +36,26 @@ Route::put('user', [ControllerUser::class, 'updateData']);
 /*************************************************************************/
 
 /* Menambahkan Data Jabatan */
-Route::post('jabatan',[ControllerJabatan::class,'createData']);
+Route::post('jabatan', [ControllerJabatan::class, 'createData']);
 
 /* Mengambil Semua Data Jabatan */
-Route::get('jabatan',[ControllerJabatan::class,'getData']);
+Route::get('jabatan', [ControllerJabatan::class, 'getData']);
 
 /* Menghapus Data Jabatan Berdasarkan ID */
-Route::delete('jabatan/{parameter}',[ControllerJabatan::class,'deleteData']);
+Route::delete('jabatan/{parameter}', [ControllerJabatan::class, 'deleteData']);
 
 /* Mengupdate Data Jabatan */
-Route::put('jabatan',[ControllerJabatan::class,'updateData']);
+Route::put('jabatan', [ControllerJabatan::class, 'updateData']);
+
+/*************************************************************************/
+
+/* Menambahkan Data Absen */
+Route::post('absen', [ControllerAbsen::class, 'createData']);
+
+/* Mengambil Semua Data Absen */
+Route::get('absen/{parameter}', [ControllerAbsen::class, 'getData']);
+
+/* Menghapus Data Absen Berdasarkan ID */
+Route::delete('jabatan/{parameter}', [ControllerAbsen::class, 'deleteData']);
 
 /*************************************************************************/
