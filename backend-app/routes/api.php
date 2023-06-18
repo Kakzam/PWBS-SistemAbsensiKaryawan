@@ -18,19 +18,20 @@ use App\Http\Controllers\ControllerUser;
 */
 
 /* Validasi Data Login */
-Route::post('login',[ControllerUser::class,'verifikasi']);
+
+Route::post('login', [ControllerUser::class, 'verifikasi']);
 
 /* Menambahkan Data User */
-Route::post('user',[ControllerUser::class,'createdData']);
+Route::post('user', [ControllerUser::class, 'createdData']);
 
 /* Mengambil Semua Data User */
-Route::get('user',[ControllerUser::class,'getData']);
+Route::get('user', [ControllerUser::class, 'getData']);
 
 /* Menghapus Data User Berdasarkan ID */
-Route::delete('user/{parameter}',[ControllerUser::class,'deleteData']);
+Route::delete('user/{parameter}', [ControllerUser::class, 'deleteData']);
 
 /* Mengupdate Data User */
-Route::put('user',[ControllerUser::class,'updateData']);
+Route::put('user', [ControllerUser::class, 'updateData']);
 
 /*************************************************************************/
 
