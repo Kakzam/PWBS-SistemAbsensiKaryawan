@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Client;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,4 +47,17 @@ Route::get('jabatan-ubah', function () {
     $url = env("APP_SERVER") . "/api/jabatan";
     $client = new Client();
     return view('jabatan_update', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody())]);
+});
+
+Route::get('absen', function () {
+    $url = env("APP_SERVER") . "/api/absen/" .
+        \Carbon\Carbon::today()->toDateString();
+    $client = new Client();
+    return view('absen_karyawan', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody())]);
+});
+
+Route::post('absen', function (Request $request) {
+    $url = env("APP_SERVER") . "/api/absen/" . $request->date;
+    $client = new Client();
+    return view('absen_karyawan', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody())]);
 });
