@@ -36,14 +36,9 @@ Route::get('user-ubah', function () {
     return view('user_update', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody()), 'jabatan' => json_decode($client->get($url_jabatan)->getBody())]);
 });
 
-Route::get('jabatan-tambah', function () {
-    $url = env("APP_SERVER") . "/api/jabatan";
+Route::get('user-ubah', function () {
+    $url = env("APP_SERVER") . "/api/user";
+    $url_jabatan = env("APP_SERVER") . "/api/jabatan";
     $client = new Client();
-    return view('jabatan_tambah', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody())]);
-});
-
-Route::get('jabatan-ubah', function () {
-    $url = env("APP_SERVER") . "/api/jabatan";
-    $client = new Client();
-    return view('jabatan_update', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody())]);
+    return view('user_update', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody()), 'jabatan' => json_decode($client->get($url_jabatan)->getBody())]);
 });
