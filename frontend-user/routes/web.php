@@ -22,23 +22,23 @@ Route::get('dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('user-tambah', function () {
+Route::get('user-absen', function () {
     $url = env("APP_SERVER") . "/api/user";
     $url_jabatan = env("APP_SERVER") . "/api/jabatan";
     $client = new Client();
-    return view('user_tambah', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody()), 'jabatan' => json_decode($client->get($url_jabatan)->getBody())]);
+    return view('user_absen', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody()), 'jabatan' => json_decode($client->get($url_jabatan)->getBody())]);
 });
 
-Route::get('user-ubah', function () {
+Route::get('user-gaji', function () {
     $url = env("APP_SERVER") . "/api/user";
     $url_jabatan = env("APP_SERVER") . "/api/jabatan";
     $client = new Client();
-    return view('user_update', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody()), 'jabatan' => json_decode($client->get($url_jabatan)->getBody())]);
+    return view('user_gaji', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody()), 'jabatan' => json_decode($client->get($url_jabatan)->getBody())]);
 });
 
-Route::get('user-ubah', function () {
+Route::get('user-profile', function () {
     $url = env("APP_SERVER") . "/api/user";
     $url_jabatan = env("APP_SERVER") . "/api/jabatan";
     $client = new Client();
-    return view('user_update', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody()), 'jabatan' => json_decode($client->get($url_jabatan)->getBody())]);
+    return view('user_profile', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody()), 'jabatan' => json_decode($client->get($url_jabatan)->getBody())]);
 });

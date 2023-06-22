@@ -68,8 +68,8 @@
                 </a>
                 <div id="user" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="user-tambah">Absensi Karyawan</a>
-                        <a class="collapse-item" href="user-ubah">Gaji Bulanan</a>
+                        <a class="collapse-item" href="user-absen">Absensi Karyawan</a>
+                        <a class="collapse-item" href="user-gaji">Gaji Bulanan</a>
                     </div>
                 </div>
             </li>
@@ -81,7 +81,7 @@
                 </a>
                 <div id="user" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="user-tambah">Update Profile</a>
+                        <a class="collapse-item" href="user-profile">Update Profile</a>
                         <a class="collapse-item" href="login">LogOut</a>
                     </div>
                 </div>

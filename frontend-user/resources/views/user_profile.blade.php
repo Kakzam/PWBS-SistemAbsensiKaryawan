@@ -39,7 +39,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Absensi</div>
+                <div class="sidebar-brand-text mx-3">Profile</div>
             </a>
 
             <!-- Divider -->
@@ -68,8 +68,8 @@
                 </a>
                 <div id="user" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="user-tambah">Absensi Karyawan</a>
-                        <a class="collapse-item" href="user-ubah">Gaji Bulanan</a>
+                        <a class="collapse-item" href="user-absen">Absensi Karyawan</a>
+                        <a class="collapse-item" href="user-gaji">Gaji Bulanan</a>
                     </div>
                 </div>
             </li>
@@ -306,7 +306,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">ABSENSI KARYAWAN</h1>
+                    <h1 class="h3 mb-2 text-gray-800">PROFILE KARYAWAN</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -331,20 +331,20 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="Tanggal" class="form-control form-control-user" id="DateTime"
-                                        placeholder="Tanggal Masuk">
+                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                        placeholder="Email Address">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="Waktu" class="form-control form-control-user"
-                                            id="Time" placeholder="Jam Masuk">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Password">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="Waktu" class="form-control form-control-user"
-                                            id="Time" placeholder="Jam Keluar">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="Repeat Password">
                                     </div>
                                 </div>
-                                <button type="button" onclick="saveUser()" class="btn btn-primary btn-user btn-block">KIRIM</button>
+                                <button type="button" onclick="saveUser()" class="btn btn-primary btn-user btn-block">SIMPAN</button>
                             </form>
                         </div>
 
