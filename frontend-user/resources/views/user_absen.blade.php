@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>User Update</title>
+    <title>Absensi Karyawan</title>
 
     <!-- Custom fonts for this template -->
     <link href="https://startbootstrap.github.io/startbootstrap-sb-admin-2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -66,27 +66,14 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>User</span>
                 </a>
-                <div id="user" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="absens" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="user-tambah">Tambah Data User</a>
-                        <a class="collapse-item" href="user-ubah">Update Data User</a>
+                        <a class="collapse-item" href="user-absen">Absensi Karyawan</a>
+                        <a class="collapse-item" href="user-absen">Gaji Bulanan</a>
                     </div>
                 </div>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#jabatan"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Jabatan</span>
-                </a>
-                <div id="jabatan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="jabatan-tambah">Tambah Jabatan</a>
-                        <a class="collapse-item" href="jabatan-ubah">Update Jabatan</a>
-                    </div>
-                </div>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -315,23 +302,26 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data User</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Absen Karyawan</h1>
 
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4" id="update_data">
+                    <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Update Data</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Masukan Data Diri</h6>
                         </div>
 
                         <div class="card-body">
-                            <form class="user mb-4">
-                                <input type="hidden" id="id">
+                            <form class="absens mb-4">
                                 <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                            placeholder="NIK">
+                                    </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
                                             placeholder="Nama Lengkap">
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 mt-3">
                                         <select class="form-control" id="pilih" aria-label="Default select options">
                                             <option value="">Pilih Jabatan</option>
                                             @foreach ($jabatan->data as $output)
@@ -340,78 +330,12 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
-                                </div>
-                                <button type="button" onclick="updateUser()" class="btn btn-danger btn-user btn-block">SIMPAN</button>
+                                <button type="button" onclick="saveUser()" class="btn btn-primary btn-user btn-block">SIMPAN</button>
                             </form>
                         </div>
+
                     </div>
 
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">List User</h6>
-                        </div>
-
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Lengkap</th>
-                                            <th>Jabatan</th>
-                                            <th>Username</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Lengkap</th>
-                                            <th>Jabatan</th>
-                                            <th>Username</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        @php
-                                            $no = 0;
-                                        @endphp
-                                        @foreach ($response->data as $output)
-                                            @php
-                                                $nama_jabatan = '';
-                                                foreach ($jabatan->data as $jabatanOutput) {
-                                                    if ($jabatanOutput->id == $output->id_jabatan) {
-                                                        $nama_jabatan = $jabatanOutput->nama_jabatan;
-                                                        break;
-                                                    }
-                                                }
-                                            @endphp
-                                            <tr>
-                                                <td>{{ ++$no }}</td>
-                                                <td>{{ $output->nama_user }}</td>
-                                                <td>{{ $nama_jabatan }}</td>
-                                                <td>{{ $output->username }}</td>
-                                                <td><Button type="button" onclick="changeUser('{{ $output->id }}', '{{ $output->nama_user }}', '{{ $output->id_jabatan }}', '{{ $output->username }}', '{{ $output->password }}')" class="btn btn-success">UPDATE</Button></td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -461,75 +385,51 @@
     </div>
 
     <script>
-        const update = document.getElementById('update_data');
-        var aksi = false;
-        update.style.display = "none";
+        function saveUser(){
+            const nama_lengkap = document.getElementById('exampleFirstName').value;
+            const id = document.getElementById('pilih').value;
+            const username = document.getElementById('exampleInputEmail').value;
+            const password = document.getElementById('exampleInputPassword').value;
+            const repassword = document.getElementById('exampleRepeatPassword').value;
 
-        document.addEventListener("DOMContentLoaded", function() {
-            aksi = true;
-        });
-        
+            if (nama_lengkap === '') {
+                alert('Nama Lengkap Anda Masih Kosong, Silahkan Isi Dulu');
+            } else if (id === '') {
+                alert('Silahkan Pilih Jabatan, Silahkan Pilih Dulu');
+            } else if (username === '') {
+                alert('Email Anda Masih Kosong, Silahkan Isi Dulu');
+            } else if (password === '') {
+                alert('Password Anda Masih Kosong, Silahkan Isi Dulu');
+            } else if (repassword === '') {
+                alert('Password Ulang Anda Masih Kosong, Silahkan Isi Dulu');
+            } else if (password !== repassword) {
+                alert('Password Anda Tidak Sama, Silahkan Periksa Kembali');
+            } else {
+                const data = {
+                        id: id,
+                        name: nama_lengkap,
+                        username: username,
+                        password: password
+                    };
 
-        function updateUser(){
-            if (aksi) {
-                const nama_lengkap = document.getElementById('exampleFirstName').value;
-                const id = document.getElementById('pilih').value;
-                const pilih = document.getElementById('id').value;
-                const username = document.getElementById('exampleInputEmail').value;
-                const password = document.getElementById('exampleInputPassword').value;
-                const repassword = document.getElementById('exampleRepeatPassword').value;
-
-                if (nama_lengkap === '') {
-                    alert('Nama Lengkap Anda Masih Kosong, Silahkan Isi Dulu');
-                } else if (id === '') {
-                    alert('Silahkan Pilih Jabatan, Silahkan Pilih Dulu');
-                } else if (username === '') {
-                    alert('Email Anda Masih Kosong, Silahkan Isi Dulu');
-                } else if (password === '') {
-                    alert('Password Anda Masih Kosong, Silahkan Isi Dulu');
-                } else if (repassword === '') {
-                    alert('Password Ulang Anda Masih Kosong, Silahkan Isi Dulu');
-                } else if (password !== repassword) {
-                    alert('Password Anda Tidak Sama, Silahkan Periksa Kembali');
-                } else {
-                    const data = {
-                            id: pilih,
-                            id_jabatan: id,
-                            name: nama_lengkap,
-                            username: username,
-                            password: password
-                        };
-
-                        fetch('{{ env('APP_SERVER') }}/api/user', {
-                                method: 'PUT',
-                                body: JSON.stringify(data),
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                }
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                alert(data.message);
-                                if (data.action) {
-                                location.reload();
-                                }
-                            })
-                            .catch(error => console.error(error))
-                }
+                    fetch('{{ env('APP_SERVER') }}/api/user', {
+                            method: 'POST',
+                            body: JSON.stringify(data),
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            alert(data.message);
+                            if (data.action) {
+                               location.reload();
+                            }
+                        })
+                        .catch(error => console.error(error))
             }
         }
 
-        function changeUser(id, nama, jabatan, username, password){
-            if(aksi){
-                document.getElementById('id').value = id;
-                document.getElementById('exampleFirstName').value = nama;
-                document.getElementById('pilih').value = jabatan;
-                document.getElementById('exampleInputEmail').value = username;
-                document.getElementById('exampleInputPassword').value = password;
-                document.getElementById('exampleRepeatPassword').value = password;
-                update.style.display = "block";
-            }
-        }
     </script>
 
     <!-- Bootstrap core JavaScript-->
