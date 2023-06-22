@@ -66,10 +66,10 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>User</span>
                 </a>
-                <div id="absens" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="absen" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="user-absen">Absensi Karyawan</a>
-                        <a class="collapse-item" href="user-absen">Gaji Bulanan</a>
+                        <a class="collapse-item" href="absen">Absensi Karyawan</a>
+                        <a class="collapse-item" href="absen">Gaji Bulanan</a>
                     </div>
                 </div>
             </li>
@@ -311,7 +311,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form class="absens mb-4">
+                            <form class="absen mb-4">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"

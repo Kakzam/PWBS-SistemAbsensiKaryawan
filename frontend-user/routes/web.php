@@ -22,11 +22,11 @@ Route::get('dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('user-absen', function () {
-    $url = env("APP_SERVER") . "/api/user";
-    $url_absens = env("APP_SERVER") . "/api/absens";
+Route::get('absen', function () {
+    $url = env("APP_SERVER") . "/api/absen";
+    $url_absen = env("APP_SERVER") . "/api/absen";
     $client = new Client();
-    return view('user_absen', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody()), 'absens' => json_decode($client->get($url_absens)->getBody())]);
+    return view('absen', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody()), 'absen' => json_decode($client->get($url_absen)->getBody())]);
 });
 
 
