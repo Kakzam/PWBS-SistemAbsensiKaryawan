@@ -39,7 +39,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">User</div>
+                <div class="sidebar-brand-text mx-3">Karyawan</div>
             </a>
 
             <!-- Divider -->
@@ -64,12 +64,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#user"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>User</span>
+                    <span>Karyawan</span>
                 </a>
-                <div id="absen" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="user" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="absen">Absensi Karyawan</a>
-                        <a class="collapse-item" href="absen">Gaji Bulanan</a>
+                        <a class="collapse-item" href="user-tambah">Absensi Karyawan</a>
+                        <a class="collapse-item" href="user-ubah">Gaji Bulanan</a>
                     </div>
                 </div>
             </li>
@@ -277,14 +277,6 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -302,26 +294,22 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Absen Karyawan</h1>
+                    <h1 class="h3 mb-2 text-gray-800">ABSENSI KARYAWAN</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Masukan Data Diri</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Masukan Data !</h6>
                         </div>
 
                         <div class="card-body">
-                            <form class="absen mb-4">
+                            <form class="user mb-4">
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="NIK">
-                                    </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
                                             placeholder="Nama Lengkap">
                                     </div>
-                                    <div class="col-sm-6 mt-3">
+                                    <div class="col-sm-6">
                                         <select class="form-control" id="pilih" aria-label="Default select options">
                                             <option value="">Pilih Jabatan</option>
                                             @foreach ($jabatan->data as $output)
@@ -330,12 +318,29 @@
                                         </select>
                                     </div>
                                 </div>
-                                <button type="button" onclick="saveUser()" class="btn btn-primary btn-user btn-block">SIMPAN</button>
+                                <div class="form-group">
+                                    <input type="Tanggal" class="form-control form-control-user" id="DateTime"
+                                        placeholder="Tanggal Masuk">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="Waktu" class="form-control form-control-user"
+                                            id="Time" placeholder="Jam Masuk">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="Waktu" class="form-control form-control-user"
+                                            id="Time" placeholder="Jam Keluar">
+                                    </div>
+                                </div>
+                                <button type="button" onclick="saveUser()" class="btn btn-primary btn-user btn-block">KIRIM</button>
                             </form>
                         </div>
 
                     </div>
 
+                    <div class="card shadow mb-4">
+
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -430,6 +435,26 @@
             }
         }
 
+        function deleteUser(id, nama){
+            const result = confirm(`Apakah Anda yakin ingin menghapus ${nama} ?`);
+
+            if (result) {
+                fetch('{{ env('APP_SERVER') }}/api/user/' + id, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    if (data.action) {
+                        location.reload();
+                    }
+                })
+                .catch(error => console.error(error));
+            }
+        }
     </script>
 
     <!-- Bootstrap core JavaScript-->
