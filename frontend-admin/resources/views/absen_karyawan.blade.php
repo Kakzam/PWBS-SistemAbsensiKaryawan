@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tambah User</title>
+    <title>Absen</title>
 
     <!-- Custom fonts for this template -->
     <link href="https://startbootstrap.github.io/startbootstrap-sb-admin-2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -321,45 +321,24 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data User</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Data Absen</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Tambah Data</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Filter Absen</h6>
                         </div>
 
                         <div class="card-body">
-                            <form class="user mb-4">
+                            <form class="user mb-4" action="absen" method="POST">
+                                @csrf
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        <input type="date" class="form-control form-control-user" name="date"
                                             placeholder="Nama Lengkap">
                                     </div>
-                                    <div class="col-sm-6">
-                                        <select class="form-control" id="pilih" aria-label="Default select options">
-                                            <option value="">Pilih Jabatan</option>
-                                            @foreach ($jabatan->data as $output)
-                                                <option value="{{ $output->id }}">{{ $output->nama_jabatan }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
-                                </div>
-                                <button type="button" onclick="saveUser()" class="btn btn-primary btn-user btn-block">SIMPAN</button>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">Filter</button>
                             </form>
                         </div>
                         
@@ -368,7 +347,7 @@
                     <div class="card shadow mb-4">
 
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">List User</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">List Absen</h6>
                         </div>
 
                         <div class="card-body">
@@ -379,8 +358,7 @@
                                             <th>No</th>
                                             <th>Nama Lengkap</th>
                                             <th>Jabatan</th>
-                                            <th>Username</th>
-                                            <th>Aksi</th>
+                                            <th>Tanggal</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -388,8 +366,7 @@
                                             <th>No</th>
                                             <th>Nama Lengkap</th>
                                             <th>Jabatan</th>
-                                            <th>Username</th>
-                                            <th>Aksi</th>
+                                            <th>Tanggal</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -466,74 +443,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function saveUser(){
-            const nama_lengkap = document.getElementById('exampleFirstName').value;
-            const id = document.getElementById('pilih').value;
-            const username = document.getElementById('exampleInputEmail').value;
-            const password = document.getElementById('exampleInputPassword').value;
-            const repassword = document.getElementById('exampleRepeatPassword').value;
-
-            if (nama_lengkap === '') {
-                alert('Nama Lengkap Anda Masih Kosong, Silahkan Isi Dulu');
-            } else if (id === '') {
-                alert('Silahkan Pilih Jabatan, Silahkan Pilih Dulu');
-            } else if (username === '') {
-                alert('Email Anda Masih Kosong, Silahkan Isi Dulu');
-            } else if (password === '') {
-                alert('Password Anda Masih Kosong, Silahkan Isi Dulu');
-            } else if (repassword === '') {
-                alert('Password Ulang Anda Masih Kosong, Silahkan Isi Dulu');
-            } else if (password !== repassword) {
-                alert('Password Anda Tidak Sama, Silahkan Periksa Kembali');
-            } else {
-                const data = {
-                        id: id,
-                        name: nama_lengkap,
-                        username: username,
-                        password: password
-                    };
-
-                    fetch('{{ env('APP_SERVER') }}/api/user', {
-                            method: 'POST',
-                            body: JSON.stringify(data),
-                            headers: {
-                                'Content-Type': 'application/json'
-                            }
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            alert(data.message);
-                            if (data.action) {
-                               location.reload();
-                            }
-                        })
-                        .catch(error => console.error(error))
-            }
-        }
-
-        function deleteUser(id, nama){
-            const result = confirm(`Apakah Anda yakin ingin menghapus ${nama} ?`);
-
-            if (result) {
-                fetch('{{ env('APP_SERVER') }}/api/user/' + id, {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message);
-                    if (data.action) {
-                        location.reload();
-                    }
-                })
-                .catch(error => console.error(error));
-            }
-        }
-    </script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/vendor/jquery/jquery.min.js"></script>

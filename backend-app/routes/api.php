@@ -18,33 +18,45 @@ use App\Http\Controllers\ControllerUser;
 */
 
 /* Validasi Data Login */
-Route::post('login',[ControllerUser::class,'verifikasi']);
+
+Route::post('login', [ControllerUser::class, 'verifikasi']);
 
 /* Menambahkan Data User */
-Route::post('user',[ControllerUser::class,'createdData']);
+Route::post('user', [ControllerUser::class, 'createdData']);
 
 /* Mengambil Semua Data User */
-Route::get('user',[ControllerUser::class,'getData']);
+Route::get('user', [ControllerUser::class, 'getData']);
 
 /* Menghapus Data User Berdasarkan ID */
-Route::delete('user/{parameter}',[ControllerUser::class,'deleteData']);
+Route::delete('user/{parameter}', [ControllerUser::class, 'deleteData']);
 
 /* Mengupdate Data User */
-Route::put('user',[ControllerUser::class,'updateData']);
+Route::put('user', [ControllerUser::class, 'updateData']);
 
 /*************************************************************************/
 
 /* Menambahkan Data Jabatan */
-Route::post('jabatan',[ControllerJabatan::class,'createData']);
+Route::post('jabatan', [ControllerJabatan::class, 'createData']);
 
 /* Mengambil Semua Data Jabatan */
-Route::get('jabatan',[ControllerJabatan::class,'getData']);
+Route::get('jabatan', [ControllerJabatan::class, 'getData']);
 
 /* Menghapus Data Jabatan Berdasarkan ID */
-Route::delete('jabatan/{parameter}',[ControllerJabatan::class,'deleteData']);
+Route::delete('jabatan/{parameter}', [ControllerJabatan::class, 'deleteData']);
 
 /* Mengupdate Data Jabatan */
-Route::put('jabatan',[ControllerJabatan::class,'updateData']);
+Route::put('jabatan', [ControllerJabatan::class, 'updateData']);
+
+/*************************************************************************/
+
+/* Menambahkan Data Absen */
+Route::post('absen', [ControllerAbsen::class, 'createData']);
+
+/* Mengambil Semua Data Absen */
+Route::get('absen/{parameter}', [ControllerAbsen::class, 'getData']);
+
+/* Menghapus Data Absen Berdasarkan ID */
+Route::delete('jabatan/{parameter}', [ControllerAbsen::class, 'deleteData']);
 
 /*************************************************************************/
 
