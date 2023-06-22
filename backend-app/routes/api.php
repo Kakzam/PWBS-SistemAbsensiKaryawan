@@ -47,3 +47,6 @@ Route::delete('jabatan/{parameter}',[ControllerJabatan::class,'deleteData']);
 Route::put('jabatan',[ControllerJabatan::class,'updateData']);
 
 /*************************************************************************/
+
+/* Menambahkan Absen Karyawan */
+Route::post('absen',[ControllerAbsen::class,'createData']);
