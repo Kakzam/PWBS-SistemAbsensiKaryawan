@@ -1,10 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RegisterController;
-
+use GuzzleHttp\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +14,19 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-// LOGIN
-Route::get('/', [LoginController::class, 'login'])->name('login');
-Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// TAMPILKAN HOME
-Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
-Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
+Route::get('dashboard', function () {
+    return view('dashboard');
+});
 
-//REGISTER
-Route::get('register', [RegisterController::class, 'register'])->name('register');
-Route::post('register/action', [RegisterController::class, 'actionregister'])->name('actionregister');
+Route::get('absen', function () {
+    $url = env("APP_SERVER") . "/api/absen";
+    $url_absen = env("APP_SERVER") . "/api/absen";
+    $client = new Client();
+    return view('absen', ['url' => env("APP_SERVER"), 'response' => json_decode($client->get($url)->getBody()), 'absen' => json_decode($client->get($url_absen)->getBody())]);
+});
+
+
